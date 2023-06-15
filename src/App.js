@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 
-function Button({ good,Setgood, Setbad,bad, Setneutral, neutral }) {
+function Button({ good, Setgood, Setbad, bad, Setneutral, neutral }) {
   return (
     <div>
       <button onClick={() => Setgood(good + 1)}>good</button>
@@ -14,18 +14,20 @@ function Button({ good,Setgood, Setbad,bad, Setneutral, neutral }) {
 }
 
 
-function Statistics({good,neutral,bad,all}) {
+
+
+function Statistics({ good, neutral, bad, all }) {
   return (
     <div>
-       <h1>statistics</h1>
+      <h1>statistics</h1>
       <p>good {good}</p>
       <p>neutral {neutral}</p>
       <p>bad {bad}</p>
       <p>all {all}</p>
-      <p>average {all/3}</p>
-      <p>positive {all != 0 ? ((good/all)*100)  :  0} %</p>
+      <p>average {all / 3}</p>
+      <p>positive {all != 0 ? ((good / all) * 100) : 0} %</p>
     </div>
-   
+
   )
 
 }
@@ -56,8 +58,8 @@ function App() {
         <h1>give feedback</h1>
         <Button good={good} Setgood={Setgood} neutral={neutral} Setneutral={Setneutral} bad={bad} Setbad={Setbad} />
       </div>
-      <div>        
-        <Statistics  good={good} bad={bad} neutral={neutral} all={all} />
+      <div>
+        <Statistics good={good} bad={bad} neutral={neutral} all={all} />
       </div>
 
 
