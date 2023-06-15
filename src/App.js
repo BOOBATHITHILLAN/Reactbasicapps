@@ -1,44 +1,51 @@
-function Header(props) {
-  const { course } = props
-  return (
-    <h1>{course}</h1>
-  )
-}
-function Content(props) {
-  const { p1, e1, p2, e2, p3, e3 } = props;
-  return (
-    <div>
-      <p>{p1} {e1}</p>
-      <p>{p2} {e2}</p>
-      <p>{p3} {e3}</p>
-    </div>
 
-  )
-}
-function Total(props) {
-  const { total } = props;
-  return (
-    <h4>Total :{total} </h4>
-  )
-}
+import { useState } from "react";
+
+
+
+
 
 
 function App() {
-  const course = 'Half Stack application development';
-  const part1 = 'Fundamentals of React';
-  const exercises1 = 10;
-  const part2 = 'Using props to pass data';
-  const exercises2 = 7;
-  const part3 = 'State of a component';
-  const exercises3 = 14;
-  const total=exercises1+exercises2+exercises3;
 
+  const [good, Setgood] = useState(0);
  
+  const [neutral, Setneutral] = useState(0);
+ 
+  const [bad, Setbad] = useState(0);
+ 
+
+  let all = good + bad + neutral;
+
+  let average = (all / 3);
+
+  let percentage = ((good / all) * 100)
+
+  
+
+
   return (
     <div className="App">
-      <Header course={course} />
-      <Content p1={part1} e1={exercises1} p2={part2} e2={exercises2} p3={part3} e3={exercises3} />
-      <Total total={total} />
+      <div>
+        <h1>give feedback</h1>
+        <button onClick={()=>Setgood(good+1)}>good</button>
+        <button onClick={()=>Setneutral(neutral+1)}>neutral</button>
+        <button onClick={()=>Setbad(bad+1)}>bad</button>
+      </div>
+      <div>
+        <h1>statistics</h1>
+        <p>good {good}</p>
+        <p>neutral {neutral}</p>
+        <p>bad {bad}</p>
+        <p>all {all}</p>
+        <p>average {average}</p>
+        <p>positive {all!=0?percentage:percentage=0}%</p>
+      </div>
+
+
+
+
+
     </div>
   );
 }
