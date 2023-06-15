@@ -2,18 +2,32 @@
 import { useState } from "react";
 
 
-function Button({text,value}){
-  return(
-    <button onClick={value}>{text}</button>
+function Button({ good,Setgood, Setbad,bad, Setneutral, neutral }) {
+  return (
+    <div>
+      <button onClick={() => Setgood(good + 1)}>good</button>
+      <button onClick={() => Setneutral(neutral + 1)}>neutral</button>
+      <button onClick={() => Setbad(bad + 1)}>bad</button>
+    </div>
+
   )
 }
 
 
-function Statistics({text,value}){
-  return(
-    <p>{text} {value}</p>
+function Statistics({good,neutral,bad,all}) {
+  return (
+    <div>
+       <h1>statistics</h1>
+      <p>good {good}</p>
+      <p>neutral {neutral}</p>
+      <p>bad {bad}</p>
+      <p>all {all}</p>
+      <p>average {all/3}</p>
+      <p>positive {all != 0 ? ((good/all)*100)  :  0} %</p>
+    </div>
+   
   )
-  
+
 }
 
 
@@ -21,11 +35,11 @@ function Statistics({text,value}){
 function App() {
 
   const [good, Setgood] = useState(0);
- 
+
   const [neutral, Setneutral] = useState(0);
- 
+
   const [bad, Setbad] = useState(0);
- 
+
 
   let all = good + bad + neutral;
 
@@ -33,25 +47,17 @@ function App() {
 
   let percentage = ((good / all) * 100)
 
-  
+
 
 
   return (
     <div className="App">
       <div>
         <h1>give feedback</h1>
-        <Button text="good" value={()=>Setgood(good+1)}/>
-        <Button text="neutral" value={()=>Setneutral(neutral+1)} />
-        <Button text="bad" value={()=>Setbad(bad+1)} />        
+        <Button good={good} Setgood={Setgood} neutral={neutral} Setneutral={Setneutral} bad={bad} Setbad={Setbad} />
       </div>
-      <div>
-        <h1>statistics</h1>
-        <Statistics text="good" value={good} />
-        <Statistics text="neutral" value={neutral} />
-        <Statistics text="bad" value={bad} />
-        <Statistics text="all" value={all} />
-        <Statistics text="average" value={average} />
-        <Statistics text="positive" value={all!=0?percentage+"%":percentage=0+"%"} />       
+      <div>        
+        <Statistics  good={good} bad={bad} neutral={neutral} all={all} />
       </div>
 
 
