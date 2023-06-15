@@ -2,8 +2,8 @@
 import { useState } from "react";
 
 
-function Buttons({text,value}){
-  return(
+function Buttons({ text, value }) {
+  return (
     <button onClick={value}>{text}</button>
   )
 }
@@ -12,17 +12,17 @@ function Buttons({text,value}){
 function Button({ good, Setgood, Setbad, bad, Setneutral, neutral }) {
   return (
     <div>
-      <Buttons text="good" value={() => Setgood(good + 1)}/>
-      <Buttons text="neutral" value={() => Setneutral(neutral + 1)}/>
-      <Buttons text="bad" value={() => Setbad(bad + 1)}/>      
+      <Buttons text="good" value={() => Setgood(good + 1)} />
+      <Buttons text="neutral" value={() => Setneutral(neutral + 1)} />
+      <Buttons text="bad" value={() => Setbad(bad + 1)} />
     </div>
 
   )
 }
 
 
-function Statisticsline({text,value}){
-  return(
+function Statisticsline({ text, value }) {
+  return (
     <p>{text} {value}</p>
   )
 }
@@ -30,14 +30,13 @@ function Statisticsline({text,value}){
 function Statistics({ good, neutral, bad, all }) {
   return (
     <div>
-      <h1>statistics</h1>
       <Statisticsline text="good" value={good} />
       <Statisticsline text="neutral" value={neutral} />
       <Statisticsline text="bad" value={bad} />
       <Statisticsline text="all" value={all} />
       <Statisticsline text="average" value={all / 3} />
-      <Statisticsline text="positive" value={all != 0 ? ((good / all) * 100)+"%" : 0+"%"} />
-      
+      <Statisticsline text="positive" value={all != 0 ? ((good / all) * 100) + "%" : 0 + "%"} />
+
     </div>
 
   )
@@ -71,6 +70,7 @@ function App() {
         <Button good={good} Setgood={Setgood} neutral={neutral} Setneutral={Setneutral} bad={bad} Setbad={Setbad} />
       </div>
       <div>
+        <h1>statistics</h1>
         <Statistics good={good} bad={bad} neutral={neutral} all={all} />
       </div>
 
