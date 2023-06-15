@@ -1,6 +1,58 @@
 
 import { useState } from "react";
 
+function Tablebutton({ good, neutral, bad }) {
+  return (
+    <div>
+      <table>
+        <tr>
+          <th>good</th>
+          <th>neutral</th>
+          <th>bad</th>
+        </tr>
+        <tr>
+          <td>{good}</td>
+          <td>{neutral}</td>
+          <td>{bad}</td>
+        </tr>
+      </table>
+    </div>
+  )
+}
+
+function Tablestat({ good, neutral, bad, all }) {
+  return (
+    <div>
+      <table>
+        <tr>
+          <th>good</th>
+          <td>{good}</td>
+        </tr>
+        <tr>
+          <th>neutral</th>
+          <td>{neutral}</td>
+        </tr>
+        <tr>
+          <th>bad</th>
+          <td>{bad}</td>
+        </tr>
+        <tr>
+          <th>all</th>
+          <td>{all}</td>
+        </tr>
+        <tr>
+          <th>average</th>
+          <td>{all / 3}</td>
+        </tr>
+        <tr>
+          <th>percentage</th>
+          <td>{all != 0 ? ((good / all) * 100) + "%" : 0 + "%"}</td>
+        </tr>
+      </table>
+    </div>
+  )
+}
+
 
 function Buttons({ text, value }) {
   return (
@@ -68,10 +120,14 @@ function App() {
       <div>
         <h1>give feedback</h1>
         <Button good={good} Setgood={Setgood} neutral={neutral} Setneutral={Setneutral} bad={bad} Setbad={Setbad} />
+        <Tablebutton good={good} neutral={neutral} bad={bad} />
       </div>
+
       <div>
         <h1>statistics</h1>
         <Statistics good={good} bad={bad} neutral={neutral} all={all} />
+        <Tablestat good={good} neutral={neutral} bad={bad} all={all} />
+
       </div>
 
 
