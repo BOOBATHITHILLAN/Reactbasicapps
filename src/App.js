@@ -2,7 +2,19 @@
 import { useState } from "react";
 
 
+function Button({text,value}){
+  return(
+    <button onClick={value}>{text}</button>
+  )
+}
 
+
+function Statistics({text,value}){
+  return(
+    <p>{text} {value}</p>
+  )
+  
+}
 
 
 
@@ -28,18 +40,18 @@ function App() {
     <div className="App">
       <div>
         <h1>give feedback</h1>
-        <button onClick={()=>Setgood(good+1)}>good</button>
-        <button onClick={()=>Setneutral(neutral+1)}>neutral</button>
-        <button onClick={()=>Setbad(bad+1)}>bad</button>
+        <Button text="good" value={()=>Setgood(good+1)}/>
+        <Button text="neutral" value={()=>Setneutral(neutral+1)} />
+        <Button text="bad" value={()=>Setbad(bad+1)} />        
       </div>
       <div>
         <h1>statistics</h1>
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
-        <p>all {all}</p>
-        <p>average {average}</p>
-        <p>positive {all!=0?percentage:percentage=0}%</p>
+        <Statistics text="good" value={good} />
+        <Statistics text="neutral" value={neutral} />
+        <Statistics text="bad" value={bad} />
+        <Statistics text="all" value={all} />
+        <Statistics text="average" value={average} />
+        <Statistics text="positive" value={all!=0?percentage+"%":percentage=0+"%"} />       
       </div>
 
 
